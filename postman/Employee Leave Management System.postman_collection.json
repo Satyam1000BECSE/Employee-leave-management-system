@@ -1,0 +1,520 @@
+{
+  "info": {
+    "_postman_id": "665c8623-becf-44ed-acaf-5f2767d22675",
+    "name": "Employee Leave Management System",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55064978",
+    "_collection_link": "https://go.postman.co/collection/55064978-665c8623-becf-44ed-acaf-5f2767d22675?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Manager login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"manager@example.com\",\r\n  \"password\": \"123456\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "employee login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"satyam@example.com\",\r\n  \"password\": \"123456\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Apply leave",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_03vv}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"leaveType\": \"Casual\",\r\n  \"startDate\": \"2026-07-10\",\r\n  \"endDate\": \"2026-07-12\",\r\n  \"reason\": \"Family Function\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/leaves",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "leaves"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Leave",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_0p0k}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"leaveType\": \"Sick\",\r\n  \"startDate\": \"2026-07-15\",\r\n  \"endDate\": \"2026-07-17\",\r\n  \"reason\": \"High Fever\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/leaves/:id",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "leaves",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "6a480e019566669d3a77c8bc"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Reject leave",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{auth_secret_00zt}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"managerComments\": \"Project deadline is near\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/leaves/:id/reject",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "leaves",
+            ":id",
+            "reject"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "6a480e019566669d3a77c8bc"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Approve Leave",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_00zt}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/leaves/:id/approve",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "leaves",
+            ":id",
+            "approve"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "6a4813339566669d3a77c8c1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All leaves",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_00zt}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/leaves",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "leaves"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Pending leaves",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_00zt}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/leaves/pending/all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "leaves",
+            "pending",
+            "all"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get leaves By ID",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_04qn}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/leaves/:id",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "leaves",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "6a4813339566669d3a77c8c1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete leave",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_04qn}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/leaves/:id",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "leaves",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "6a4813339566669d3a77c8c1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Manager dashboard",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_154s}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"satyam@example.com\",\r\n  \"password\": \"123456\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/dashboard/manager",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "dashboard",
+            "manager"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Employees",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_154s}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"satyam@example.com\",\r\n  \"password\": \"123456\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/employees",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "employees"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "Employee leave environment",
+      "value": ""
+    },
+    {
+      "key": "json_web_token_03vv",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_0p0k",
+      "secret": true
+    },
+    {
+      "key": "auth_secret_00zt",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_00zt",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_04qn",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_154s",
+      "secret": true
+    }
+  ]
+}
