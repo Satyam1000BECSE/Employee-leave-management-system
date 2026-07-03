@@ -132,3 +132,9 @@ employee-leave-system/
 ├── .env.example
 │
 └── .gitignore
+
+## Demo
+
+A complete walkthrough of the Employee Leave Management System is available here:
+
+**Video Link:** https://drive.google.com/file/d/1We_QNyW1NPxmswUetk1MMuI7CK2olaiY/view?usp=drivesdk
